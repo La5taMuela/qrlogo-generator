@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <link rel="shortcut icon" href="../public/qr-code.svg" type="image/x-icon">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Generate QR Code</h1>
+    <div class="card shadow p-4" style="max-width: 500px; margin: 0 auto;">
+      <form id="qr-form">
+        <div class="mb-3">
+          <label for="link" class="form-label">Link</label>
+          <input type="text" id="link" class="form-control" placeholder="Enter a link" required>
+        </div>
+        <div id="drop-area">
+          <p>Drag & Drop a logo here (optional) or click to upload</p>
+          <input type="file" id="logo" class="form-control d-none" accept="image/*">
+          <div class="preview-container">
+            <img id="preview-logo" alt="Preview Logo" class="img-fluid mt-2 d-none">
+            <button type="button" class="remove-logo d-none" onclick="removeLogo()">×</button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-4">Generate QR Code</button>
+      </form>
+      <div id="qr-result" class="mt-4 text-center d-none">
+        <h5>QR Code Generated!</h5>
+        <div class="qr-container">
+          <img id="qr-image" alt="Generated QR Code" class="my-3">
+        </div>
+        <div class="btn-group">
+          <a id="download-qr" class="btn btn-success" download="qr-code.png">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download me-2" viewBox="0 0 16 16">
+              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>
+            Download QR Code
+          </a>
+          <button class="btn btn-secondary" onclick="resetForm()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat me-2" viewBox="0 0 16 16">
+              <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+              <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+            </svg>
+            Generate Another
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
+
